@@ -28,7 +28,6 @@ const LoginScreen = ({ navigation }) => {
     setLoading(false);
 
     if (result.success) {
-      // Navigation will be handled by App.js auth state change
     } else {
       Alert.alert("Login Failed", result.error);
     }

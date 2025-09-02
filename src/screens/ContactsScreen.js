@@ -52,7 +52,7 @@ const ContactsScreen = ({ navigation }) => {
 
   const startConversation = async (otherUser) => {
     try {
-      // Check if conversation already exists
+      // check if conversation already exists
       const conversationsRef = collection(db, "conversations");
       const q = query(
         conversationsRef,
@@ -70,13 +70,13 @@ const ContactsScreen = ({ navigation }) => {
       });
 
       if (existingConversation) {
-        // Navigate to existing conversation
+        // navigate to the existing conversation
         navigation.navigate("Chat", {
           conversationId: existingConversation.id,
           otherUser: otherUser,
         });
       } else {
-        // Create new conversation
+        // create a new conversation
         const newConversation = await addDoc(conversationsRef, {
           participants: [currentUser.uid, otherUser.uid],
           createdAt: serverTimestamp(),

@@ -31,8 +31,7 @@ const ProfileScreen = ({ navigation }) => {
         setDisplayName(currentUser.displayName || "");
         setPhoneNumber(currentUser.phoneNumber || "");
 
-        // Load additional profile data from Firestore
-        const userDoc = await getDoc(doc(db, "users", currentUser.uid)); // Change from 'firestore' to 'db'
+        const userDoc = await getDoc(doc(db, "users", currentUser.uid));
         if (userDoc.exists()) {
           const userData = userDoc.data();
           setDisplayName(userData.displayName || currentUser.displayName || "");
@@ -52,13 +51,11 @@ const ProfileScreen = ({ navigation }) => {
 
     setLoading(true);
     try {
-      // Update Firebase Auth profile
       await updateProfile(currentUser, {
         displayName: displayName.trim(),
       });
 
-      // Update Firestore user document
-      const userRef = doc(db, "users", currentUser.uid); // Change from 'firestore' to 'db'
+      const userRef = doc(db, "users", currentUser.uid);
       await updateDoc(userRef, {
         displayName: displayName.trim(),
         updatedAt: new Date(),

@@ -46,7 +46,6 @@ const RegisterScreen = ({ navigation }) => {
       );
       if (result.success) {
         Alert.alert("Success", "Account created successfully!");
-        // AuthContext will handle navigation automatically
       } else {
         Alert.alert("Error", result.error);
       }

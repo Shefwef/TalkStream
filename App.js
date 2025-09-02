@@ -4,7 +4,6 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { AuthProvider, useAuth } from "./src/contexts/AuthContext";
 
-// Import screens
 import LoginScreen from "./src/screens/LoginScreen";
 import RegisterScreen from "./src/screens/RegisterScreen";
 import PhoneLoginScreen from "./src/screens/PhoneLoginScreen";
@@ -40,7 +39,7 @@ function AppNavigator() {
   const { user, loading } = useAuth();
 
   if (loading) {
-    return null; // You can add a loading screen here
+    return null;
   }
 
   return (

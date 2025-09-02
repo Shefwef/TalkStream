@@ -29,7 +29,7 @@ const HomeScreen = ({ navigation }) => {
   useEffect(() => {
     if (!currentUser) return;
 
-    // Listen to conversations where current user is a participant
+    // listen to conversation
     const conversationsRef = collection(db, "conversations");
     const q = query(
       conversationsRef,
@@ -43,7 +43,7 @@ const HomeScreen = ({ navigation }) => {
       for (const docSnapshot of snapshot.docs) {
         const conversationData = docSnapshot.data();
 
-        // Get the other participant's info
+        // get other participants info
         const otherParticipantId = conversationData.participants.find(
           (id) => id !== currentUser.uid
         );
@@ -82,7 +82,7 @@ const HomeScreen = ({ navigation }) => {
 
   const onRefresh = () => {
     setRefreshing(true);
-    // The onSnapshot listener will automatically refresh the data
+    // onsnapshot listener automatically refresh the data
   };
 
   const renderConversationItem = ({ item }) => (

@@ -16,7 +16,6 @@ const PhoneLoginScreen = ({ navigation }) => {
   const [loading, setLoading] = useState(false);
 
   const handlePhoneLogin = async () => {
-    // UI only - no actual implementation yet
     Alert.alert("Info", "Phone login functionality will be implemented later");
   };
 

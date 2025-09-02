@@ -39,7 +39,7 @@ const ChatScreen = ({ route, navigation }) => {
   useEffect(() => {
     if (!conversationId) return;
 
-    // Listen to messages in this conversation
+    // listen to messages in this conversation
     const messagesRef = collection(
       db,
       "conversations",
@@ -56,7 +56,7 @@ const ChatScreen = ({ route, navigation }) => {
       setMessages(messagesList);
       setLoading(false);
 
-      // Scroll to bottom when new messages arrive
+      // scroll to bottom when new messages are sent
       setTimeout(() => {
         flatListRef.current?.scrollToEnd({ animated: true });
       }, 100);
@@ -72,7 +72,7 @@ const ChatScreen = ({ route, navigation }) => {
     setNewMessage("");
 
     try {
-      // Add message to the conversation
+      // add message to the conversation
       const messagesRef = collection(
         db,
         "conversations",
@@ -86,7 +86,7 @@ const ChatScreen = ({ route, navigation }) => {
         timestamp: serverTimestamp(),
       });
 
-      // Update conversation's last message info
+      // update conversations last message infos
       const conversationRef = doc(db, "conversations", conversationId);
       await updateDoc(conversationRef, {
         lastMessage: messageText,
